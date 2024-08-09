@@ -1,6 +1,6 @@
 {
   "name": "expo-data-inspector",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Inspect data with devtools",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -12,7 +12,8 @@
     "prepare": "expo-module prepare",
     "prepublishOnly": "expo-module prepare && expo-module prepublishOnly && cd webui && npx expo export -p web --output-dir ../dist",
     "web:dev": "cd webui && npx expo start -w",
-    "web:export": "cd webui && npx expo export -p web --output-dir ../dist"
+    "web:export": "cd webui && npx expo export -p web --output-dir ../dist",
+    "release": "npm publish --registry=https://registry.npmjs.com/"
   },
   "keywords": [
     "expo",
