@@ -3,25 +3,17 @@ import { useEffect, useReducer } from 'react';
 
 export function useDataInspector(name: string, data: Record<string, any>) {
   const client = useDevToolsPluginClient('data-inspector');
-  const [updateIndex, refresh] = useReducer((prev: number) => prev + 1, 0);
+  const [, refresh] = useReducer((prev) => prev + 1, 0);
 
   useEffect(() => {
-    const subscriptions: EventSubscription[] = [];
+    if (!client) return;
 
-    subscriptions.push(
-      client?.addMessageListener('refresh', () => {
-        refresh();
-      })
-    );
+    const subscription = client.addMessageListener('refresh', refresh);
 
-    return () => {
-      for (const subscription of subscriptions) {
-        subscription?.remove();
-      }
-    };
+    return () => subscription?.remove();
   }, [client]);
 
   useEffect(() => {
     client?.sendMessage('updateData', { [name]: data });
-  }, [data, updateIndex]);
+  }, [client, name, data]);
 }
