@@ -17,3 +17,5 @@ export function useDataInspector(name: string, data: Record<string, any>) {
     client?.sendMessage('updateData', { [name]: data });
   }, [client, name, data]);
 }
+
+// optimized.
