@@ -20,6 +20,3 @@ For bare React Native projects, you must ensure that you have [installed and con
 ```
 npm install data-inspector
 ```
-
-
-Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).
